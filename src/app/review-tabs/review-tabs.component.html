@@ -1,0 +1,43 @@
+<mat-tab-group mat-stretch-tabs  
+               class="example-stretched-tabs mat-elevation-z4"
+		[ngStyle]="{textAlign: 'center'}">
+  <mat-tab label="Directives">
+
+    <label>
+      Enter a student number:
+      <input [(ngModel)]="bio.gilgurpaID">
+    </label>
+
+    <hr>
+    <div *ngIf="bio.gilgurpaID==='991529145';else notme">
+      <h4>This is {{bio.gilgurpaName}}</h4>
+      <img src="assets/images/cpPansy.jpg" width="100">
+    </div>
+    
+    <ng-template #notme>
+      <h4>THIS IS NOT ME</h4>
+      <img src="assets/images/notme.jpg" width="100">
+    </ng-template>
+
+    <hr [ngStyle]="{border: 'thick solid crimson'}">
+
+    <p [innerHTML]="output">
+
+    </p>
+
+    <button (click)="checkdate()">
+      Click to show the final exam date
+    </button>
+
+  </mat-tab>
+
+  <mat-tab label="External Data">
+
+    <h3>Bus Schedule</h3>
+    <p *ngFor="let sch of schedule">
+      Route: {{sch.route}} / Leaves: {{sch.leave}} / Arrive: {{sch.arrive}}
+    </p>
+
+  </mat-tab>
+
+</mat-tab-group>
